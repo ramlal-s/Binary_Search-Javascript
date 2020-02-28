@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title>
+        Binary Search
+    </title>
+</head>
+
+<body onLoad="binarySearch()">
+    <h1>Iterative method of binary search</h1>
+    <script>
+        function binarySearch() {
+
+            // Enter number of elements
+            let n = parseInt(prompt("Enter number of elements"));
+            console.log(n);
+
+            // Enter elements
+            let a = new Array(n);
+            for (var i = 0; i < n; i++) {
+                a[i] = parseInt(prompt("enter elements"));
+                console.log(a[i]);
+            }
+
+            // sort elements
+
+            function sortArray(a, b) {
+                return a - b;
+            }
+
+            a.sort(sortArray);
+            console.log(a + "sorted elements");
+
+            // binary search
+            var key = parseInt(prompt("Enter key to search"));
+
+            let lowIndex = 0;
+            let highIndex = a.length - 1;
+            let pos = -1;
+            while (lowIndex < highIndex) {
+                var midIndex = Math.floor((lowIndex + highIndex) / 2);
+                // console.log(midIndex);
+
+                if (a[midIndex] == key) {
+                    //console.log("Key found at" + midIndex);
+                    pos = midIndex + 1;
+                    break;
+                } else if (a[midIndex] < key) {
+                    lowIndex = midIndex + 1;
+
+                } else {
+                    highIndex = midIndex - 1;
+                }
+
+            }
+            if (pos === -1) {
+                console.log("Key not found");
+            } else {
+                console.log("key found at  " + pos);
+            }
+
+        }
+    </script>
+</body></html>
